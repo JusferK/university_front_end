@@ -1,0 +1,36 @@
+<p-menubar [model]="menuItems">
+  <ng-template pTemplate="end">
+    <div class="flex align-items-center gap-2">
+      <p-splitButton
+        [label]="buttonLabel()"
+        [model]="profileMenuItems"
+        severity="secondary"
+        class="split-button-profile"
+        appendTo="body"
+      />
+    </div>
+  </ng-template>
+</p-menubar>
+
+<router-outlet/>
+
+<p-dialog
+  [modal]="true"
+  [(visible)]="utilService.showLoading"
+  [closable]="false"
+  [draggable]="false"
+  [resizable]="false"
+  [showHeader]="false"
+  [styleClass]="'custom-loading-dialog'"
+  [contentStyle]="{
+    'background': 'transparent',
+    'box-shadow': 'none !important',
+     'display': 'flex',
+     'justify-content': 'center'
+  }"
+>
+  <p-progressSpinner
+    ariaLabel="loading"
+    styleClass="custom-spinner"
+  />
+</p-dialog>

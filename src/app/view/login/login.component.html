@@ -1,0 +1,39 @@
+<main>
+  <header>
+    <h1>¡Bienvenido!</h1>
+  </header>
+  <section>
+    <article>
+      <form [formGroup]="loginForm">
+        <p-inputGroup>
+          <p-inputGroupAddon>
+            <i class="pi pi-user"></i>
+          </p-inputGroupAddon>
+          <input
+            formControlName="email"
+            class="input-item"
+            pInputText
+            placeholder="Ingresa tu correo o usuario."
+          />
+        </p-inputGroup>
+
+        <p-inputGroup>
+          <p-inputGroupAddon>
+            <i class="pi pi-lock"></i>
+          </p-inputGroupAddon>
+          <input
+            type="text"
+            pInputText
+            placeholder="Ingresa tu contraseña"
+            formControlName="password"
+            class="input-item"
+          />
+        </p-inputGroup>
+        <p-button
+          label="Acceder"
+          (onClick)="accessHandler()"
+        />
+      </form>
+    </article>
+  </section>
+</main>

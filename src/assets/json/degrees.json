@@ -1,0 +1,16 @@
+[
+  { "label": "Doctor", "value": "doctor" },
+  { "label": "Doctora", "value": "doctor" },
+  { "label": "Maestro", "value": "master" },
+  { "label": "Maestra", "value": "master" },
+  { "label": "Licenciado", "value": "bachelor" },
+  { "label": "Licenciada", "value": "bachelor" },
+  { "label": "Ingeniero", "value": "engineer" },
+  { "label": "Ingeniera", "value": "engineer" },
+  { "label": "Profesor", "value": "professor" },
+  { "label": "Profesora", "value": "professor" },
+  { "label": "PhD", "value": "phd" },
+  { "label": "MSc", "value": "msc" },
+  { "label": "MBA", "value": "mba" },
+  { "label": "Postdoctorado", "value": "postdoc" }
+]

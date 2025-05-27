@@ -1,0 +1,18 @@
+<section>
+  <header>
+    <h1>{{ isStudent() ? (
+      'Carnet del estudiante: ' + student()?.studentId
+    ) : (
+      'ID del profesor: ' + catedratic()?.catedraticId
+    ) }}</h1>
+  </header>
+  <article>
+    <p>Nombre: {{ isStudent() ? student()?.name : catedratic()?.name }}</p>
+    <p>Apellido: {{ isStudent() ? student()?.lastName : catedratic()?.lastName }}</p>
+    <p>Correo: {{ isStudent() ? student()?.email : catedratic()?.email }}</p>
+    <p>Genero: {{ isStudent() ? (student()!.sex | gender) : (catedratic()!.sex | gender) }}</p>
+    <p>
+      {{ isStudent() ? 'Fecha de nacimiento' : 'Ultimo titulo obtenido' }}: {{ isStudent() ? (student()?.birthDate | date) : (catedratic()!.latestDegree | degree) }}
+    </p>
+  </article>
+</section>

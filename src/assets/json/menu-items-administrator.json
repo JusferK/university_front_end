@@ -1,0 +1,27 @@
+[
+  {
+    "label": "Agragar usuario",
+    "icon": "pi pi-fw pi-user-plus",
+    "routerLink": "/administrator/add-user"
+  },
+  {
+    "label": "Actualizar usuario",
+    "icon": "pi pi-fw pi-user-edit",
+    "routerLink": "/administrator/update-user"
+  },
+  {
+    "label": "Remover usuarios",
+    "icon": "pi pi-fw pi-user-minus",
+    "routerLink": "/administrator/remove-user"
+  },
+  {
+    "label": "Asignacion",
+    "icon": "pi pi-check-square",
+    "routerLink": "/administrator/assignation"
+  },
+  {
+    "label": "Lista de usuario",
+    "icon": "pi pi-list",
+    "routerLink": "/administrator/list"
+  }
+]
