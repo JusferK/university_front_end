@@ -1,11 +1,16 @@
-import {inject, Injectable} from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { ELoginProtectionsEnum } from "../../enum/ELoginProtections.enum";
 import { IStudent } from "../../interface/IStudent.interface";
 import { IAdministrator } from "../../interface/IAdministrator";
 import { ICatedratic } from "../../interface/ICatedratic.interface";
-import {ESessionType} from "../../enum/ESessionType.enum";
-import {Router} from "@angular/router";
-import {ProfileService} from "./profile.service";
+import { ESessionType } from "../../enum/ESessionType.enum";
+import { 
+  ActivatedRoute,
+  NavigationEnd,
+  Router
+} from "@angular/router";
+import { ProfileService } from "./profile.service";
+import { filter } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +28,10 @@ export class RedirectToSessionService {
 
     if ((url === '/login' || url === '/' || url === ''.trim()) && user) {
       this._router.navigate([`/${session}`]).then(() => {});
-    } else {
-      this._router.navigate(['/login']).then(() => {});
+    }
+
+    if (!user && url !== '/login') {
+      this._router.navigate(['/login']);
     }
 
   }

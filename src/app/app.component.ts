@@ -6,12 +6,4 @@ import {RedirectToSessionService} from "./service/execution/redirect-to-session.
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit {
-
-  private _sessionRedirectService: RedirectToSessionService = inject(RedirectToSessionService);
-
-  ngOnInit(): void {
-    this._sessionRedirectService.redirect();
-  }
-
-}
+export class AppComponent {}

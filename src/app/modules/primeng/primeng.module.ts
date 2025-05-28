@@ -14,6 +14,7 @@ import { MessageService, ConfirmationService } from 'primeng/api';
 import { DialogModule } from 'primeng/dialog';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { SplitButtonModule } from 'primeng/splitbutton';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [],
@@ -31,7 +32,8 @@ import { SplitButtonModule } from 'primeng/splitbutton';
     ToastModule,
     DialogModule,
     ProgressSpinnerModule,
-    SplitButtonModule
+    SplitButtonModule,
+    TableModule
   ],
   exports: [
     InputGroupModule,
@@ -47,8 +49,10 @@ import { SplitButtonModule } from 'primeng/splitbutton';
     ToastModule,
     DialogModule,
     ProgressSpinnerModule,
-    SplitButtonModule
+    SplitButtonModule,
+    TableModule
   ],
   providers: [MessageService, ConfirmationService]
 })
-export class PrimengModule {}
+export class PrimengModule {
+}

@@ -25,6 +25,10 @@ const routes: Routes = [
     path: ESessionType.STUDENT,
     loadChildren: () => import('./modules/student/student.module').then(m => m.StudentModule),
     canActivate: [sessionGuard]
+  },
+  {
+    path: '**',
+    redirectTo: 'login'
   }
 ];
 
