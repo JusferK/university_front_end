@@ -5,13 +5,13 @@ import {
 import { MenuItem } from "primeng/api";
 import MenuItems from '../../../../../assets/json/menu-items-administrator.json';
 import ProfileMenuItems from '../../../../../assets/json/profile-menu-items.json';
-import {UtilService} from "../../../../service/execution/util.service";
-import {ProfileService} from "../../../../service/execution/profile.service";
-import {IStudent} from "../../../../interface/IStudent.interface";
-import {ICatedratic} from "../../../../interface/ICatedratic.interface";
-import {IAdministrator} from "../../../../interface/IAdministrator";
-import {ESessionType} from "../../../../enum/ESessionType.enum";
-import {Router} from "@angular/router";
+import { UtilService } from "../../../../service/execution/util.service";
+import { ProfileService } from "../../../../service/execution/profile.service";
+import { IStudent } from "../../../../interface/IStudent.interface";
+import { ICatedratic } from "../../../../interface/ICatedratic.interface";
+import { IAdministrator } from "../../../../interface/IAdministrator";
+import { ESessionType } from "../../../../enum/ESessionType.enum";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-main',
@@ -20,7 +20,6 @@ import {Router} from "@angular/router";
 })
 export class MainComponent implements OnInit {
 
-  utilService: UtilService = inject(UtilService);
   menuItems: MenuItem[] = MenuItems;
   profileMenuItems: MenuItem[] = ProfileMenuItems;
   buttonLabel: WritableSignal<string> = signal<string>('');
@@ -57,7 +56,8 @@ export class MainComponent implements OnInit {
 
   private logoutHandler(): void {
     this._profileService.logout();
-    this._router.navigate(['/login']).then(() => {});
+    this._router.navigate(['/login']).then(() => {
+    });
   }
 
   private addLogoutHandler(): void {
@@ -68,8 +68,5 @@ export class MainComponent implements OnInit {
       return itemIteration;
     });
   }
-
-
-
 
 }

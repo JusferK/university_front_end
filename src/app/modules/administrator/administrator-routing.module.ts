@@ -3,10 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from "./page/main/main.component";
 import { AddUserComponent } from "./components/add-user/add-user.component";
 import { UpdateUserComponent } from "./components/update-user/update-user.component";
-import { RemoveUserComponent } from "./components/remove-user/remove-user.component";
 import { AssignationComponent } from "./components/assignation/assignation.component";
-import {UserListComponent} from "./components/user-list/user-list.component";
-import {GetDataListResolver} from "./resolver/get-data-list.resolver";
+import { UserListComponent } from "./components/user-list/user-list.component";
+import { GetDataListResolver } from "./resolver/get-data-list.resolver";
+import { SearchUserResolver } from "./resolver/search-user.resolver";
 
 const routes: Routes = [
   {
@@ -18,12 +18,11 @@ const routes: Routes = [
         component: AddUserComponent
       },
       {
-        path: 'update-user',
-        component: UpdateUserComponent
-      },
-      {
-        path: 'remove-user',
-        component: RemoveUserComponent
+        path: 'update-user/:userType/:id',
+        component: UpdateUserComponent,
+        resolve: {
+          user: SearchUserResolver
+        }
       },
       {
         path: 'assignation',
@@ -35,11 +34,10 @@ const routes: Routes = [
         resolve: {
           users: GetDataListResolver
         },
-
       },
       {
         path: '',
-        redirectTo: 'add-user',
+        redirectTo: 'list',
         pathMatch: 'full'
       }
     ]
@@ -50,4 +48,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AdministratorRoutingModule { }
+export class AdministratorRoutingModule {
+}

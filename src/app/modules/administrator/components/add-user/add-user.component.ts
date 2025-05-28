@@ -10,7 +10,7 @@ import {
   FormGroup,
   Validators
 } from "@angular/forms";
-import {ISelect} from "../../../../interface/ISelect.interface";
+import { ISelect } from "../../../../interface/ISelect.interface";
 import UserType from '../../../../../assets/json/user-type.json';
 import Genders from '../../../../../assets/json/gender-type.json';
 import Degrees from '../../../../../assets/json/degrees.json';
@@ -24,7 +24,7 @@ import { ICatedratic } from "../../../../interface/ICatedratic.interface";
 import { UtilService } from "../../../../service/execution/util.service";
 import { StudentApiService } from "../../service/api/student-api.service";
 import { CatedraticApiService } from "../../service/api/catedratic-api.service";
-import {finalize, Subscription} from "rxjs";
+import { finalize, Subscription } from "rxjs";
 
 @Component({
   selector: 'app-add-user',
@@ -120,6 +120,7 @@ export class AddUserComponent implements OnDestroy {
 
     this._utilService.showSpinner();
     let subscription: Subscription;
+    this.dataToPresent.set(undefined);
 
     if (this.isStudent()) {
       subscription = this._studentService

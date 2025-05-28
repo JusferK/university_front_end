@@ -8,26 +8,43 @@
       <section>
         <p-table
           [tableStyle]="{ 'min-width': '50rem' }"
-          [value]="showType() === 'STUDENT' ? students() : catedratics()"
+          [value]="isStudent() ? students() : catedratics()"
         >
           <ng-template pTemplate="header">
             <tr>
-              <th>{{ showType() === 'STUDENT' ? 'Carnet' : 'ID' }}</th>
+              <th>{{ isStudent() ? 'Carnet' : 'ID' }}</th>
               <th>Nombre</th>
               <th>Apellido</th>
               <th>Correo</th>
               <th>Genero</th>
-              <th>{{ showType() === 'STUDENT' ? 'Fecha de naciemiento' : 'Ultimo titulo obtenido' }}</th>
+              <th>{{ isStudent() ? 'Fecha de naciemiento' : 'Ultimo titulo obtenido' }}</th>
+              <th>Actualizar</th>
+              <th>Eliminar</th>
             </tr>
           </ng-template>
           <ng-template pTemplate="body" let-user>
             <tr>
-              <td>{{ showType() === 'STUDENT' ? user.studentId : user.catedraticId }}</td>
+              <td>{{ isStudent() ? user.studentId : user.catedraticId }}</td>
               <td>{{ user.name }}</td>
               <td>{{ user.lastName }}</td>
               <td>{{ user.email }}</td>
               <td>{{ user.sex | gender }}</td>
-              <td>{{ showType() === 'STUDENT' ? (user.birthDate | date) : (user.latestDegree | degree) }}</td>
+              <td>{{ isStudent() ? (user.birthDate | date) : (user.latestDegree | degree) }}</td>
+              <td>
+                <p-button
+                  label="Actualizar"
+                  icon="pi pi-user-edit"
+                  (onClick)="directToUpdate(user)"
+                />
+              </td>
+              <td>
+                <p-button
+                  label="Remover"
+                  icon="pi pi-trash"
+                  severity="danger"
+                  (onClick)="removeHandler(user)"
+                />
+              </td>
             </tr>
           </ng-template>
         </p-table>
@@ -35,3 +52,4 @@
     </article>
   </p-panel>
 </main>
+<p-toast/>

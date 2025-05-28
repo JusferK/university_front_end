@@ -1,0 +1,16 @@
+::ng-deep .custom-loading-dialog {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+::ng-deep .custom-loading-dialog .p-dialog-header {
+  display: none !important;
+}
+
+::ng-deep .custom-loading-dialog .p-dialog {
+  overflow: hidden !important;
+}
+
+::ng-deep .custom-spinner .p-progress-spinner-circle {
+  stroke: dodgerblue !important;
+}
