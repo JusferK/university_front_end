@@ -1,5 +1,5 @@
-import {Pipe, PipeTransform} from '@angular/core';
-import {ESex} from "../../../enum/ESex.enum";
+import { Pipe, PipeTransform } from '@angular/core';
+import { ESex } from "../enum/ESex.enum";
 
 @Pipe({
   name: 'gender'

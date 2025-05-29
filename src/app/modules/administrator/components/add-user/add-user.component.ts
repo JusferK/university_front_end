@@ -43,9 +43,9 @@ export class AddUserComponent implements OnDestroy {
   isStudent: WritableSignal<boolean> = signal<boolean>(true);
   presentData: WritableSignal<boolean> = signal<boolean>(false);
   dataToPresent: WritableSignal<ICatedratic | IStudent | undefined> = signal<ICatedratic | IStudent | undefined>(undefined);
-  userType: ISelect[] = UserType;
-  genders: ISelect[] = Genders;
-  degrees: ISelect[] = Degrees;
+  userType: ISelect<string>[] = UserType;
+  genders: ISelect<string>[] = Genders;
+  degrees: ISelect<string>[] = Degrees;
 
   newUserForm: FormGroup = this._formBuilder.group({
     name: ['', Validators.required],

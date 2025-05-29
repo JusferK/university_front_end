@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {EDegree} from "../enums/EDegree.enum";
+import { EDegree } from "../modules/administrator/enums/EDegree.enum";
 
 @Pipe({
   name: 'degree'

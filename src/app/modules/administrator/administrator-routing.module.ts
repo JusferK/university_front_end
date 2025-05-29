@@ -26,7 +26,8 @@ const routes: Routes = [
       },
       {
         path: 'assignation',
-        component: AssignationComponent
+        component: AssignationComponent,
+        loadChildren: () => import('./modules/assignation/assignation.module').then(m => m.AssignationModule)
       },
       {
         path: 'list',

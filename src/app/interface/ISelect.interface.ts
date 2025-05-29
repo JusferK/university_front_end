@@ -1,4 +1,4 @@
-export interface ISelect {
+export interface ISelect<T> {
   label: string;
-  value: string;
+  value: T;
 }

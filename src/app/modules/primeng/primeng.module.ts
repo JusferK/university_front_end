@@ -15,6 +15,11 @@ import { DialogModule } from 'primeng/dialog';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { TableModule } from 'primeng/table';
+import { MenuModule } from 'primeng/menu';
+import { FieldsetModule } from 'primeng/fieldset';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { PickListModule } from 'primeng/picklist';
 
 @NgModule({
   declarations: [],
@@ -33,7 +38,12 @@ import { TableModule } from 'primeng/table';
     DialogModule,
     ProgressSpinnerModule,
     SplitButtonModule,
-    TableModule
+    TableModule,
+    MenuModule,
+    FieldsetModule,
+    InputTextareaModule,
+    InputSwitchModule,
+    PickListModule,
   ],
   exports: [
     InputGroupModule,
@@ -50,7 +60,12 @@ import { TableModule } from 'primeng/table';
     DialogModule,
     ProgressSpinnerModule,
     SplitButtonModule,
-    TableModule
+    TableModule,
+    MenuModule,
+    FieldsetModule,
+    InputTextareaModule,
+    InputSwitchModule,
+    PickListModule,
   ],
   providers: [MessageService, ConfirmationService]
 })

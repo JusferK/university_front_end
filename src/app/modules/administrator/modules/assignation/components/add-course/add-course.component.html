@@ -1,0 +1,122 @@
+<main>
+  <p-fieldset legend="Nuevo curso">
+    <form [formGroup]="newCourseForm">
+
+      <div class="form-group item-1">
+        <label for="name">Nombre</label>
+        <input
+          id="name"
+          pInputText
+          aria-describedby="name-help"
+          formControlName="name"
+          placeholder="Ingresa el nombre del curso"
+          [ngClass]="hasError('name', 'required') ? 'ng-dirty ng-invalid' : 'ng-valid'"
+        />
+        @if (hasError('name', 'required')) {
+          <small
+            id="name"
+            class="ng-dirty ng-invalid"
+          >
+            Se requiere el nombre del curso.
+          </small>
+        }
+      </div>
+
+      <div class="form-group item-2">
+        <label for="description">Descripcion</label>
+        <textarea
+          id="description"
+          pInputText
+          aria-describedby="description-help"
+          formControlName="description"
+          placeholder="Ingresa la descripcion del curso"
+          [ngClass]="hasError('description', 'required') ? 'ng-dirty ng-invalid' : 'ng-valid'"
+        >
+        </textarea>
+        @if (hasError('description', 'required')) {
+          <small
+            id="name"
+            class="ng-dirty ng-invalid"
+          >
+            Se requiere la descripcion del curso.
+          </small>
+        }
+      </div>
+
+      <div class="form-group item-3">
+        <p-dropdown
+          [options]="catedraticOptions()"
+          optionLabel="label"
+          placeholder="Selecciona al catedratico encargado"
+          [ngClass]="hasError('catedraticId', 'required') ? 'ng-dirty ng-invalid' : 'ng-valid'"
+          (onChange)="changeHandler($event)"
+        />
+        @if (hasError('catedraticId', 'required')) {
+          <small
+            id="name"
+            class="ng-dirty ng-invalid"
+          >
+            Se requiere la descripcion del curso.
+          </small>
+        }
+      </div>
+
+      <div class="form-group item-4">
+        <label>¿Agregar estudiantes al curso?</label>
+        <p-inputSwitch
+          (onChange)="onSwitchChange($event)"
+          #inputSwitch
+        />
+        @if (showAggregableStudents()) {
+          <p-pickList
+            [source]="studentOptions()"
+            [target]="selectedStudents()"
+            sourceHeader="Estudiantes"
+            [targetHeader]="courseNameHeader()"
+            [dragdrop]="true"
+            [responsive]="true"
+            [disabled]="studentsWereSelected()"
+          >
+            <ng-template let-student pTemplate="item">
+              <div>
+                <div>
+                  <span class="font-bold">
+                    {{ student.name }} {{ student.lastName }}
+                  </span>
+                  <div class="flex align-items-center gap-2">
+                    <span>
+                      {{ student.email }}
+                    </span>
+                  </div>
+                </div>
+                <span>
+                  {{ student.studentId }}
+                </span>
+              </div>
+            </ng-template>
+          </p-pickList>
+          <div>
+            <p-button
+              [label]="studentsWereSelected() ? 'Editar' : 'Agregar estudiantes'"
+              [icon]="studentsWereSelected() ? 'pi pi-user-edit' : 'pi pi-user-plus'"
+              iconPos="right"
+              [severity]="studentsWereSelected() ? 'info' : 'primary'"
+              class="p-button-submit"
+              (onClick)="clickHandler()"
+            />
+          </div>
+        }
+      </div>
+
+      <p-button
+        label="Agregar"
+        icon="pi pi-plus"
+        iconPos="left"
+        class="p-button-submit item-5"
+        (click)="addHandler()"
+      />
+
+    </form>
+  </p-fieldset>
+</main>
+<p-toast/>

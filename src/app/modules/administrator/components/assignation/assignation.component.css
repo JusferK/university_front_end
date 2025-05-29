@@ -1,0 +1,22 @@
+main {
+  margin: 5px;
+  height: 100%;
+  display: flex;
+  gap: 5px;
+}
+
+p-menu {
+  height: 92vh;
+  display: block;
+  width: fit-content;
+  box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.2);
+}
+
+::ng-deep p-menu > div {
+  height: 100%;
+}
+
+.p-menuitem-link {
+  display: flex;
+  gap: 0.5rem;
+}

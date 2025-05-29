@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, Signal, signal, WritableSignal } from '@angular/core';
+import { Component, computed, inject, OnDestroy, OnInit, Signal, signal, WritableSignal } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { IStudent } from "../../../../interface/IStudent.interface";
 import { ICatedratic } from "../../../../interface/ICatedratic.interface";
@@ -23,7 +23,7 @@ import { MessageService } from "primeng/api";
   styleUrl: './update-user.component.css',
   providers: [DatePipe, MessageService]
 })
-export class UpdateUserComponent {
+export class UpdateUserComponent implements OnDestroy {
 
   presentData: WritableSignal<boolean> = signal<boolean>(false);
   dataToPresent: WritableSignal<ICatedratic | IStudent | undefined> = signal<ICatedratic | IStudent | undefined>(undefined);
@@ -49,8 +49,8 @@ export class UpdateUserComponent {
     birthDate: [''],
     latestDegree: ['']
   });
-  degrees: ISelect[] = Degrees;
-  genders: ISelect[] = Genders;
+  degrees: ISelect<string>[] = Degrees;
+  genders: ISelect<string>[] = Genders;
 
   private _route: ActivatedRoute = inject(ActivatedRoute);
   private _router: Router = inject(Router);
@@ -68,6 +68,10 @@ export class UpdateUserComponent {
     this.transformInputs();
   }
 
+  ngOnDestroy() {
+    this.unsubscribeAll();
+  }
+
   hasError(input: string, errorName: string): boolean | undefined {
     return this.updateForm.get(input)?.hasError(errorName) && this.updateForm.get(input)?.touched;
   }
@@ -76,18 +80,22 @@ export class UpdateUserComponent {
     this._utilService.showSpinner();
     this.setUnabledInputs();
     if (this.isStudent()) {
-      this._studentApiService.updateStudent(this.prepareStudent() as IStudent)
+      const subscription: Subscription = this._studentApiService.updateStudent(this.prepareStudent() as IStudent)
         .pipe(finalize((): void => this._utilService.hideSpinner()))
         .subscribe({
           next: (value: IStudent): void => this.handleSuccess(value)
         });
+
+      this._subscriptions.push(subscription);
       return;
     } else {
-      this._catedraticApiService.updateCatedratic(this.prepareCatedratic() as ICatedratic)
+      const subscription: Subscription = this._catedraticApiService.updateCatedratic(this.prepareCatedratic() as ICatedratic)
         .pipe(finalize((): void => this._utilService.hideSpinner()))
         .subscribe({
           next: (value: ICatedratic): void => this.handleSuccess(value)
         });
+
+      this._subscriptions.push(subscription);
     }
 
   }
@@ -189,6 +197,10 @@ export class UpdateUserComponent {
   private presentDataHandler(data: IStudent | ICatedratic): void {
     this.dataToPresent.set(data);
     this.presentData.set(true);
+  }
+
+  private unsubscribeAll(): void {
+    this._subscriptions.forEach((subscription: Subscription): void => subscription.unsubscribe());
   }
 
 }

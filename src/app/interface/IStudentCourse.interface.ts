@@ -1,5 +1,5 @@
 export interface IStudentCourse {
-  id: number;
+  id?: number;
   studentId: number;
   courseId: number;
 }
