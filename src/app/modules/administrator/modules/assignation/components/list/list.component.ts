@@ -1,6 +1,6 @@
 import { Component, inject, OnDestroy, signal, WritableSignal } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { ICourse } from "../../../../../../interface/ICourse.interface";
+import { ICourse, ICourseWithStudents } from "../../../../../../interface/ICourse.interface";
 import { TableRowCollapseEvent, TableRowExpandEvent } from "primeng/table";
 import { CourseApiService } from "../../service/api/course-api.service";
 import { UtilService } from "../../../../../../service/execution/util.service";
@@ -17,7 +17,7 @@ import { MessageService } from "primeng/api";
 export class ListComponent implements OnDestroy {
 
   expandedRows: { [key: string]: boolean } = {};
-  courses: WritableSignal<ICourse[]> = signal<ICourse[]>([]);
+  courses: WritableSignal<ICourseWithStudents[]> = signal<ICourseWithStudents[]>([]);
   private _activatedRoute: ActivatedRoute = inject(ActivatedRoute);
   private _courseApiService: CourseApiService = inject(CourseApiService);
   private _utilService: UtilService = inject(UtilService);
@@ -56,7 +56,7 @@ export class ListComponent implements OnDestroy {
   }
 
   private handlerRemove(course: ICourse): void {
-    this.courses.update((prev: ICourse[]): ICourse[] => prev.filter((iteration: ICourse): boolean => iteration.courseId !== course.courseId));
+    this.courses.update((prev: ICourseWithStudents[]): ICourseWithStudents[] => prev.filter((iteration: ICourse): boolean => iteration.courseId !== course.courseId));
 
     const detail: string = `El curso ${course.name} fue eliminado exitosamente con el ID ${course.courseId}`;
     const summary: string = 'Curso eliminado exitosamente!';

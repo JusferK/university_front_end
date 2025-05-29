@@ -10,15 +10,12 @@ export class CourseApiService {
 
   private _httpClient: HttpClient = inject(HttpClient);
 
-  getCourses(): Observable<ICourse> {
-    return this._httpClient.get<ICourse>('/course/get-courses');
+  getCourses(): Observable<ICourse[]> {
+    return this._httpClient.get<ICourse[]>('/course/get-courses');
   }
 
   save(course: ICourse): Observable<ICourse> {
-    return this._httpClient.post<ICourse>('/course/new-course', course)
-      .pipe(
-        delay(2000)
-      );
+    return this._httpClient.post<ICourse>('/course/new-course', course);
   }
 
   delete(id: number): Observable<any> {
