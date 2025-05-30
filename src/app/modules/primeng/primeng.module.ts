@@ -21,6 +21,8 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { PickListModule } from 'primeng/picklist';
 import { DividerModule } from 'primeng/divider';
+import { AvatarModule } from 'primeng/avatar';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 
 @NgModule({
   declarations: [],
@@ -46,6 +48,8 @@ import { DividerModule } from 'primeng/divider';
     InputSwitchModule,
     PickListModule,
     DividerModule,
+    AvatarModule,
+    OverlayPanelModule,
   ],
   exports: [
     InputGroupModule,
@@ -69,6 +73,8 @@ import { DividerModule } from 'primeng/divider';
     InputSwitchModule,
     PickListModule,
     DividerModule,
+    AvatarModule,
+    OverlayPanelModule,
   ],
   providers: [MessageService, ConfirmationService]
 })

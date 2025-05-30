@@ -2,13 +2,23 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CatedraticRoutingModule } from './catedratic-routing.module';
+import { MainFrameComponent } from './page/main-frame/main-frame.component';
+import { ListCoursesComponent } from "./components/list-courses/list-courses.component";
+import { ViewProfileComponent } from './components/view-profile/view-profile.component';
+import { PrimengModule } from "../primeng/primeng.module";
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    MainFrameComponent,
+    ListCoursesComponent,
+    ViewProfileComponent,
+  ],
   imports: [
     CommonModule,
-    CatedraticRoutingModule
+    CatedraticRoutingModule,
+    PrimengModule,
   ]
 })
-export class CatedraticModule { }
+export class CatedraticModule {
+}

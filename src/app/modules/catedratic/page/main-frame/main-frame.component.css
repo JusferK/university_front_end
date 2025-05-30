@@ -1,0 +1,14 @@
+:host {
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.menu-bar-item {
+  margin-right: 5px;
+}
