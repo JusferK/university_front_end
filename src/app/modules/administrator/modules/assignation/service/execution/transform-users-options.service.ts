@@ -4,6 +4,7 @@ import { ITransformedUsersArguments } from "../../interface/ITransformedUsersArg
 import { isStudent, IStudent } from "../../../../../../interface/IStudent.interface";
 import { ICatedratic } from "../../../../../../interface/ICatedratic.interface";
 import { ISelect } from "../../../../../../interface/ISelect.interface";
+import { ICourse } from "../../../../../../interface/ICourse.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,6 @@ import { ISelect } from "../../../../../../interface/ISelect.interface";
 export class TransformUsersOptionsService {
 
   transformUsersOptions({ users }: ITransformedUsersArguments): ITransformedUsers {
-
     const students: WritableSignal<ISelect<IStudent>[]> = signal<ISelect<IStudent>[]>([]);
     const catedratics: WritableSignal<ISelect<ICatedratic>[]> = signal<ISelect<ICatedratic>[]>([]);
 
@@ -19,6 +19,14 @@ export class TransformUsersOptionsService {
     catedratics.set(this.transformToOptions(users.catedratics));
 
     return { catedratics, students };
+  }
+
+  transformCatedraticOptions(catedratics: ICatedratic[]): ISelect<number>[] {
+    return this.transformCatedraticsToOptions(catedratics);
+  }
+
+  transformCoursesOptions(courses: ICourse[]): ISelect<number>[] {
+    return courses.map((course: ICourse): ISelect<number> => this.transformCourseOption(course));
   }
 
   private transformToOptions<T extends IStudent | ICatedratic>(data: T[]): ISelect<T>[] {
@@ -34,6 +42,22 @@ export class TransformUsersOptionsService {
         };
       }
     });
+  }
+
+  private transformCatedraticsToOptions(catedratics: ICatedratic[]): ISelect<number>[] {
+    return catedratics.map((catedratic: ICatedratic): ISelect<number> => {
+      return {
+        label: `${catedratic.name} ${catedratic.lastName} - ID ${catedratic.catedraticId}`,
+        value: catedratic.catedraticId
+      }
+    })
+  }
+
+  private transformCourseOption(course: ICourse): ISelect<number> {
+    return {
+      label: `${course.name} - ID ${course.courseId}`,
+      value: course.courseId!
+    }
   }
 
 }

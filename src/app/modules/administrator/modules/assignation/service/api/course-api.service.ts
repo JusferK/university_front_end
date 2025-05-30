@@ -14,6 +14,17 @@ export class CourseApiService {
     return this._httpClient.get<ICourse[]>('/course/get-courses');
   }
 
+  getCourse(id: number): Observable<ICourse> {
+    return this._httpClient.get<ICourse>(`/course/get-course-by-id/${id}`);
+  }
+
+  update(course: ICourse): Observable<ICourse> {
+    return this._httpClient.put<ICourse>('/course/update-course', course)
+      .pipe(
+        delay(2000)
+      );
+  }
+
   save(course: ICourse): Observable<ICourse> {
     return this._httpClient.post<ICourse>('/course/new-course', course);
   }

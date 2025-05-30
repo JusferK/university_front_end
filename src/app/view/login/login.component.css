@@ -30,3 +30,16 @@ form {
 .input-item {
   width: 100%;
 }
+
+
+p-password {
+  border: 0;
+  padding: 0;
+}
+
+
+::ng-deep .p-password,
+::ng-deep p-password input,
+p-password {
+  width: 100%;
+}

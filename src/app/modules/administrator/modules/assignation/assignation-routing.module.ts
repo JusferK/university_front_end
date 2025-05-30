@@ -6,6 +6,9 @@ import { AddCourseComponent } from "./components/add-course/add-course.component
 import { AssignCourseComponent } from "./components/assign-course/assign-course.component";
 import { GetCoursesResolver } from "./resolver/get-courses.resolver";
 import { GetDataListResolver } from "../../resolver/get-data-list.resolver";
+import { UpdateCourseComponent } from "./components/update-course/update-course.component";
+import { GetCourseResolver } from "./resolver/get-course.resolver";
+import { CoursesAndStudentsResolver } from "./resolver/courses-and-students.resolver";
 
 const routes: Routes = [
   {
@@ -27,8 +30,18 @@ const routes: Routes = [
         }
       },
       {
+        path: 'update-course/:id',
+        component: UpdateCourseComponent,
+        resolve: {
+          updateData: GetCourseResolver
+        }
+      },
+      {
         path: 'assignation',
         component: AssignCourseComponent,
+        resolve: {
+          entities: CoursesAndStudentsResolver
+        }
       },
       {
         path: '**',
@@ -44,6 +57,8 @@ const routes: Routes = [
   providers: [
     GetCoursesResolver,
     GetDataListResolver,
+    GetCourseResolver,
+    CoursesAndStudentsResolver,
   ]
 })
 export class AssignationRoutingModule {

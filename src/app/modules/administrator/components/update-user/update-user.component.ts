@@ -1,9 +1,21 @@
-import { Component, computed, inject, OnDestroy, OnInit, Signal, signal, WritableSignal } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  OnDestroy,
+  Signal,
+  signal,
+  WritableSignal
+} from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { IStudent } from "../../../../interface/IStudent.interface";
 import { ICatedratic } from "../../../../interface/ICatedratic.interface";
 import { ISearchUser } from "../../interface/ISearchUser.interface";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import {
+  FormBuilder,
+  FormGroup,
+  Validators
+} from "@angular/forms";
 import { ISelect } from "../../../../interface/ISelect.interface";
 import Degrees from "../../../../../assets/json/degrees.json";
 import Genders from "../../../../../assets/json/gender-type.json";

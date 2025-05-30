@@ -1,5 +1,5 @@
 import { Component, inject, OnDestroy, signal, WritableSignal } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { ICourse, ICourseWithStudents } from "../../../../../../interface/ICourse.interface";
 import { TableRowCollapseEvent, TableRowExpandEvent } from "primeng/table";
 import { CourseApiService } from "../../service/api/course-api.service";
@@ -24,6 +24,7 @@ export class ListComponent implements OnDestroy {
   private _subscription: Subscription[] = [];
   private _toastService: ToastService = inject(ToastService);
   private _messageService: MessageService = inject(MessageService);
+  private _router: Router = inject(Router);
 
   constructor() {
     this.getData();
@@ -39,6 +40,11 @@ export class ListComponent implements OnDestroy {
 
   onRowCollapse(event: TableRowCollapseEvent): void {
     delete this.expandedRows[event.data.studentId];
+  }
+
+  updateHandler(id: number): void {
+    this._router.navigate(['/administrator/assignation/update-course', id]).then(() => {
+    });
   }
 
   removeHandler(course: ICourse): void {

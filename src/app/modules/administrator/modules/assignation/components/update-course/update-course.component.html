@@ -1,1 +1,76 @@
-<p>update-course works!</p>
+<main>
+  <p-fieldset [legend]="legend()">
+    <form [formGroup]="updateCourseForm">
+
+      <div class="form-group item-1">
+        <label for="name">Nombre</label>
+        <input
+          id="name"
+          pInputText
+          aria-describedby="name-help"
+          formControlName="name"
+          placeholder="Ingresa el nombre del curso"
+          [ngClass]="hasError('name', 'required') ? 'ng-dirty ng-invalid' : 'ng-valid'"
+        />
+        @if (hasError('name', 'required')) {
+          <small
+            id="name"
+            class="ng-dirty ng-invalid"
+          >
+            Se requiere el nombre del curso.
+          </small>
+        }
+      </div>
+
+      <div class="form-group item-2">
+        <label for="description">Descripcion</label>
+        <textarea
+          id="description"
+          pInputText
+          aria-describedby="description-help"
+          formControlName="description"
+          placeholder="Ingresa la descripcion del curso"
+          [ngClass]="hasError('description', 'required') ? 'ng-dirty ng-invalid' : 'ng-valid'"
+        >
+        </textarea>
+        @if (hasError('description', 'required')) {
+          <small
+            id="name"
+            class="ng-dirty ng-invalid"
+          >
+            Se requiere la descripcion del curso.
+          </small>
+        }
+      </div>
+
+      <div class="form-group item-3">
+        <p-dropdown
+          [options]="catedraticsOptions()"
+          optionValue="value"
+          optionLabel="label"
+          formControlName="catedraticId"
+          placeholder="Selecciona al catedratico encargado"
+          [ngClass]="hasError('catedraticId', 'required') ? 'ng-dirty ng-invalid' : 'ng-valid'"
+        />
+        @if (hasError('catedraticId', 'required')) {
+          <small
+            id="name"
+            class="ng-dirty ng-invalid"
+          >
+            Se requiere la descripcion del curso.
+          </small>
+        }
+      </div>
+
+      <p-button
+        label="Actualizar"
+        icon="pi pi-plus"
+        iconPos="left"
+        class="p-button-submit update-button item-4"
+        (click)="updateHandler()"
+      />
+
+    </form>
+  </p-fieldset>
+</main>
+<p-toast/>

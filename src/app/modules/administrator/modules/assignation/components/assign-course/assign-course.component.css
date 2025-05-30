@@ -1,0 +1,21 @@
+::ng-deep .p-fieldset-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+::ng-deep .p-picklist ul {
+  overflow-y: auto;
+  height: 500px;
+}
+
+.p-button-submit {
+  place-self: center;
+}

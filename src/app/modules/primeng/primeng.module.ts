@@ -20,6 +20,7 @@ import { FieldsetModule } from 'primeng/fieldset';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { PickListModule } from 'primeng/picklist';
+import { DividerModule } from 'primeng/divider';
 
 @NgModule({
   declarations: [],
@@ -44,6 +45,7 @@ import { PickListModule } from 'primeng/picklist';
     InputTextareaModule,
     InputSwitchModule,
     PickListModule,
+    DividerModule,
   ],
   exports: [
     InputGroupModule,
@@ -66,6 +68,7 @@ import { PickListModule } from 'primeng/picklist';
     InputTextareaModule,
     InputSwitchModule,
     PickListModule,
+    DividerModule,
   ],
   providers: [MessageService, ConfirmationService]
 })

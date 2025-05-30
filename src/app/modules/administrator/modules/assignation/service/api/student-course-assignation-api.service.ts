@@ -14,4 +14,8 @@ export class StudentCourseAssignationApiService {
     return this._httpClient.post<IStudentCourse>('/assignment/assign-student-to-course', assignation);
   }
 
+  unAssignStudentToCourse(assignation: IStudentCourse): Observable<IStudentCourse> {
+    return this._httpClient.put<IStudentCourse>('/assignment/unassign-student-to-course', assignation);
+  }
+
 }

@@ -21,12 +21,14 @@
           <p-inputGroupAddon>
             <i class="pi pi-lock"></i>
           </p-inputGroupAddon>
-          <input
+          <p-password
             type="text"
             pInputText
             placeholder="Ingresa tu contraseña"
             formControlName="password"
             class="input-item"
+            [toggleMask]="true"
+            [feedback]="false"
           />
         </p-inputGroup>
         <p-button

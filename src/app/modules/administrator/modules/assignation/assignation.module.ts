@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { Dir } from "@angular/cdk/bidi";
 import { AdministratorModule } from "../../administrator.module";
+import { NoDataRowOutlet } from "@angular/cdk/table";
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { AdministratorModule } from "../../administrator.module";
     DragDropModule,
     Dir,
     AdministratorModule,
+    NoDataRowOutlet,
   ]
 })
 export class AssignationModule {

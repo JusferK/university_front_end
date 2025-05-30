@@ -1,1 +1,62 @@
-<p>assign-course works!</p>
+<main>
+  <p-fieldset legend="Asignacion de cursos">
+
+    <div class="form-group">
+      <label for="sex">Cursos</label>
+      <p-dropdown
+        [options]="coursesOptions()"
+        optionValue="value"
+        optionLabel="label"
+        #dropdown
+        id="sex"
+        class="p-dropdown-sex"
+        placeholder="Selecciona el genero"
+        (onChange)="dropdownChangeHandler($event)"
+      />
+    </div>
+
+    <p-divider align="center" type="solid">{{ courseNameSelected() }}</p-divider>
+
+    <div class="form-group pick-container">
+      <p-pickList
+        [source]="studentsUnassigned()"
+        [target]="studentsAssigned()"
+        sourceHeader="No asignados"
+        targetHeader="Asignados"
+        [dragdrop]="true"
+        [responsive]="true"
+        [disabled]="enableAssignationBox()"
+      >
+        <ng-template let-student pTemplate="item">
+          <div>
+            <div>
+              <span class="font-bold">
+                {{ student.name }} {{ student.lastName }}
+              </span>
+              <div class="flex align-items-center gap-2">
+                <span>
+                  {{ student.email }}
+                </span>
+              </div>
+            </div>
+            <span>
+              Carnet: {{ student.studentId }}
+            </span>
+          </div>
+        </ng-template>
+      </p-pickList>
+    </div>
+
+    <p-divider/>
+
+    <p-button
+      label="Asignar"
+      icon="pi pi-user-plus"
+      iconPos="left"
+      class="p-button-submit"
+      (click)="assignHandler()"
+    />
+
+  </p-fieldset>
+</main>
+<p-toast/>
