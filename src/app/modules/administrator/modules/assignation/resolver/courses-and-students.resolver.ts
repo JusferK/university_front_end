@@ -1,7 +1,7 @@
 import { ActivatedRouteSnapshot, MaybeAsync, Resolve, RouterStateSnapshot } from "@angular/router";
 import { CourseApiService } from "../service/api/course-api.service";
 import { inject, Injectable } from "@angular/core";
-import { StudentApiService } from "../../../service/api/student-api.service";
+import { StudentApiService } from "../../../../../service/api/student-api.service";
 import { UtilService } from "../../../../../service/execution/util.service";
 import { delay, finalize, forkJoin, Observable } from "rxjs";
 import { IStudent } from "../../../../../interface/IStudent.interface";

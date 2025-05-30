@@ -1,0 +1,47 @@
+<main>
+  <p-panel header="Lista de usuarios" class="main-container-panel">
+    <article>
+      <section>
+        <p-table
+          [tableStyle]="{ 'min-width': '50rem' }"
+          [value]="administratorsList()"
+        >
+          <ng-template pTemplate="header">
+            <tr>
+              <th>ID</th>
+              <th>Username</th>
+              <th>Remover</th>
+            </tr>
+          </ng-template>
+          @if (administratorsList().length > 0) {
+            <ng-template pTemplate="body" let-admin>
+              <tr>
+                <td>{{ admin.id }}</td>
+                <td>{{ admin.username }}</td>
+                <td>
+                  <p-button
+                    label="Remover"
+                    icon="pi pi-trash"
+                    severity="danger"
+                    (onClick)="removeHandler(admin)"
+                  />
+                </td>
+              </tr>
+            </ng-template>
+          } @else {
+            <ng-template pTemplate="emptymessage">
+              <tr>
+                <td colspan="7">
+                  <strong>
+                    <p style="text-align: center">No hay otros administradores</p>
+                  </strong>
+                </td>
+              </tr>
+            </ng-template>
+          }
+        </p-table>
+      </section>
+    </article>
+  </p-panel>
+</main>
+<p-toast/>

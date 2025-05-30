@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { ICatedratic } from "../../../../interface/ICatedratic.interface";
+import { ICatedratic } from "../../interface/ICatedratic.interface";
 import { delay, Observable } from "rxjs";
 
 @Injectable({

@@ -50,6 +50,7 @@
           placeholder="Selecciona al catedratico encargado"
           [ngClass]="hasError('catedraticId', 'required') ? 'ng-dirty ng-invalid' : 'ng-valid'"
           (onChange)="changeHandler($event)"
+          #pDropdown
         />
         @if (hasError('catedraticId', 'required')) {
           <small

@@ -1,13 +1,11 @@
 import {
-  ActivatedRoute,
   ActivatedRouteSnapshot,
-  MaybeAsync,
   Resolve, Router,
   RouterStateSnapshot
 } from '@angular/router';
 import { inject, Injectable } from "@angular/core";
-import { StudentApiService } from "../service/api/student-api.service";
-import { CatedraticApiService } from "../service/api/catedratic-api.service";
+import { StudentApiService } from "../../../service/api/student-api.service";
+import { CatedraticApiService } from "../../../service/api/catedratic-api.service";
 import { UtilService } from "../../../service/execution/util.service";
 import { catchError, delay, finalize, forkJoin, Observable, of, tap } from "rxjs";
 

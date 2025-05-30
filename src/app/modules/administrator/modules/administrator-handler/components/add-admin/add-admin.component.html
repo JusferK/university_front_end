@@ -1,0 +1,59 @@
+<main>
+  <p-panel header="Agregar administrador" class="main-container-panel">
+    <form
+      [formGroup]="newAdminForm"
+    >
+      <div class="form-group">
+        <label for="name">Usuario</label>
+        <input
+          id="name"
+          pInputText
+          aria-describedby="name-help"
+          formControlName="username"
+          placeholder="Ingresa el nombre del estudiante o del catedratico"
+          [ngClass]="hasError('username', 'required') ? 'ng-dirty ng-invalid' : 'ng-valid'"
+        />
+        @if (hasError('username', 'required')) {
+          <small
+            id="name"
+            class="ng-dirty ng-invalid"
+          >
+            Se requiere el usuario.
+          </small>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <p-password
+          id="password"
+          pInputText
+          type="password"
+          aria-describedby="password"
+          formControlName="password"
+          placeholder="Ingresa la contraseña del estudiante o del catedratico"
+          [ngClass]="hasError('password', 'required') ? 'ng-dirty ng-invalid' : 'ng-valid'"
+          [toggleMask]="true"
+        />
+        @if (hasError('password', 'required')) {
+          <small
+            id="password"
+            class="ng-dirty ng-invalid"
+          >
+            Se requiere la contraseña
+          </small>
+        }
+      </div>
+
+      <p-button
+        label="Agregar administrador"
+        icon="pi pi-user-plus"
+        iconPos="left"
+        class="p-button-submit"
+        (click)="addHandler()"
+      />
+
+    </form>
+  </p-panel>
+</main>
+<p-toast/>

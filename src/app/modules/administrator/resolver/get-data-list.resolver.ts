@@ -4,8 +4,8 @@ import {
   ResolveFn
 } from '@angular/router';
 import { inject, Injectable } from "@angular/core";
-import { StudentApiService } from "../service/api/student-api.service";
-import { CatedraticApiService } from "../service/api/catedratic-api.service";
+import { StudentApiService } from "../../../service/api/student-api.service";
+import { CatedraticApiService } from "../../../service/api/catedratic-api.service";
 import { Observable, forkJoin, delay, finalize } from "rxjs";
 import { UtilService } from "../../../service/execution/util.service";
 

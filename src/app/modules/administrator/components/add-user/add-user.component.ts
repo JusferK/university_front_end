@@ -22,8 +22,8 @@ import { ConfirmationService } from "primeng/api";
 import { IConfirmationArguments } from "../../interface/IConfirmationArguments.interface";
 import { ICatedratic } from "../../../../interface/ICatedratic.interface";
 import { UtilService } from "../../../../service/execution/util.service";
-import { StudentApiService } from "../../service/api/student-api.service";
-import { CatedraticApiService } from "../../service/api/catedratic-api.service";
+import { StudentApiService } from "../../../../service/api/student-api.service";
+import { CatedraticApiService } from "../../../../service/api/catedratic-api.service";
 import { finalize, Subscription } from "rxjs";
 
 @Component({
@@ -91,6 +91,10 @@ export class AddUserComponent implements OnDestroy {
     }
   }
 
+  hasError(input: string, errorName: string): boolean | undefined {
+    return this.newUserForm.get(input)?.hasError(errorName) && this.newUserForm.get(input)?.touched;
+  }
+
   private isDateBirthValid(): boolean {
     const value: string = this.newUserForm.get('birthDate')?.value as string;
     if (value) return true;
@@ -110,10 +114,6 @@ export class AddUserComponent implements OnDestroy {
       acceptHandler: (): void => this.addUser(body)
     };
     this._confirmationPopupService.confirm(confirmationArguments);
-  }
-
-  hasError(input: string, errorName: string): boolean | undefined {
-    return this.newUserForm.get(input)?.hasError(errorName) && this.newUserForm.get(input)?.touched;
   }
 
   private addUser(body: IStudent | ICatedratic): void {

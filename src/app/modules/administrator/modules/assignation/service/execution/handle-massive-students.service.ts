@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { StudentApiService } from "../../../../service/api/student-api.service";
+import { StudentApiService } from "../../../../../../service/api/student-api.service";
 import { IStudent } from "../../../../../../interface/IStudent.interface";
 import { delay, forkJoin, Observable } from "rxjs";
 import { IStudentCourse } from "../../../../../../interface/IStudentCourse.interface";

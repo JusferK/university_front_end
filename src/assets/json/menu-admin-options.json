@@ -1,0 +1,17 @@
+[
+  {
+    "label": "Secciones",
+    "items": [
+      {
+        "label": "Lista de administradores",
+        "icon": "pi pi-list",
+        "route": "/administrator/administrator-handler/list"
+      },
+      {
+        "label": "Agregar administrador",
+        "icon": "pi pi-fw pi-user-plus",
+        "route": "/administrator/administrator-handler/add-admin"
+      }
+    ]
+  }
+]

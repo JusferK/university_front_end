@@ -79,3 +79,8 @@ textarea {
   width: 100% !important;
 }
 
+::ng-deep .p-picklist ul {
+  overflow-y: auto;
+  height: 300px;
+}
+

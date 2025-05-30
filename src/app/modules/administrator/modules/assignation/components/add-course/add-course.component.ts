@@ -16,7 +16,7 @@ import { ICatedratic } from "../../../../../../interface/ICatedratic.interface";
 import { TransformUsersOptionsService } from "../../service/execution/transform-users-options.service";
 import { ActivatedRoute } from "@angular/router";
 import { ITransformedUsers } from "../../interface/ITransformedUsers.interface";
-import { DropdownChangeEvent } from "primeng/dropdown";
+import {Dropdown, DropdownChangeEvent} from "primeng/dropdown";
 import { InputSwitch, InputSwitchChangeEvent } from "primeng/inputswitch";
 import { Subscription } from "rxjs";
 import { CourseApiService } from "../../service/api/course-api.service";
@@ -38,12 +38,15 @@ import { HandleMassiveAssignationService } from "../../service/execution/handle-
 export class AddCourseComponent implements OnDestroy {
 
   @ViewChild('inputSwitch') inputSwitch!: InputSwitch;
+  @ViewChild('pDropdown') pDropdown!: Dropdown;
 
   showAggregableStudents: WritableSignal<boolean> = signal<boolean>(false);
   studentOptions: WritableSignal<IStudent[]> = signal<IStudent[]>([]);
   catedraticOptions: WritableSignal<ISelect<ICatedratic>[]> = signal<ISelect<ICatedratic>[]>([]);
   selectedStudents: WritableSignal<IStudent[]> = signal<IStudent[]>([]);
   studentsWereSelected: WritableSignal<boolean> = signal<boolean>(false);
+
+  studentCentralizedData: WritableSignal<IStudent[]> = signal<IStudent[]>([]);
 
   private _formBuilder: FormBuilder = inject(FormBuilder);
   newCourseForm: FormGroup = this._formBuilder.group({
@@ -97,7 +100,7 @@ export class AddCourseComponent implements OnDestroy {
   }
 
   addHandler(): void {
-    if (this.newCourseForm.invalid) {
+    if (this.newCourseForm.invalid || (!this.studentsWereSelected() && this.showAggregableStudents())) {
       this.newCourseForm.markAllAsTouched();
       return;
     }
@@ -114,13 +117,14 @@ export class AddCourseComponent implements OnDestroy {
 
   private initDefinition(): void {
     const users = this._activatedRoute.snapshot.data['users'] as { students: IStudent[], catedratics: ICatedratic[] };
+    this.studentCentralizedData.set([...users.students]);
 
     const signals: ITransformedUsers = this._transformUserOptionsService.transformUsersOptions({ users });
 
     const { catedratics } = signals;
 
     this.catedraticOptions.set(catedratics());
-    this.studentOptions.set(users.students);
+    this.setStudentOptions(users.students);
   }
 
   private courseNameChangesBehaviour(): void {
@@ -143,18 +147,15 @@ export class AddCourseComponent implements OnDestroy {
       this._subscription.push(subscription);
     } else {
       this._utilService.hideSpinner();
-      this._utilService.hideSpinner();
       this.showSuccessToast(detail, summary);
-      this.newCourseForm.reset();
-      this.studentsWereSelected.set(false);
       this.showAggregableStudents.set(false);
       this.inputSwitch.writeValue(false);
-      this.courseNameHeader.set('Asignados a este curso');
     }
 
   }
 
   private methodHandler(detail: string, summary: string): void {
+    this.pDropdown.writeValue('');
     this.showSuccessToast(detail, summary);
     this.newCourseForm.reset();
     this.studentsWereSelected.set(false);
@@ -163,6 +164,8 @@ export class AddCourseComponent implements OnDestroy {
     this.selectedStudents.set([]);
     this.courseNameHeader.set('Asignados a este curso');
     this._utilService.hideSpinner();
+    this.setStudentOptions(this.studentCentralizedData());
+    this.selectedStudents.set([]);
   }
 
   private showSuccessToast(detail: string, summary: string): void {
@@ -175,6 +178,10 @@ export class AddCourseComponent implements OnDestroy {
 
   private unsubscribeAll(): void {
     this._subscription.forEach((subscription: Subscription) => subscription.unsubscribe());
+  }
+
+  private setStudentOptions(students: IStudent[]): void {
+    this.studentOptions.set(students);
   }
 
 }

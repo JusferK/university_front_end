@@ -1,11 +1,11 @@
 import { Resolve, ResolveFn } from '@angular/router';
 import { inject, Injectable } from "@angular/core";
 import { CourseApiService } from "../service/api/course-api.service";
-import { catchError, concatMap, delay, finalize, forkJoin, map, Observable, of, switchMap } from "rxjs";
+import {catchError, concatMap, delay, EMPTY, finalize, forkJoin, map, Observable, of, switchMap} from "rxjs";
 import { ICourse, ICourseWithStudents } from "../../../../../interface/ICourse.interface";
 import { UtilService } from "../../../../../service/execution/util.service";
-import { StudentApiService } from "../../../service/api/student-api.service";
-import { CatedraticApiService } from "../../../service/api/catedratic-api.service";
+import { StudentApiService } from "../../../../../service/api/student-api.service";
+import { CatedraticApiService } from "../../../../../service/api/catedratic-api.service";
 import { ICatedratic } from "../../../../../interface/ICatedratic.interface";
 import { setThrowInvalidWriteToSignalError } from "@angular/core/primitives/signals";
 import { HandleMassiveStudentsService } from "../service/execution/handle-massive-students.service";
@@ -41,7 +41,7 @@ export class GetCoursesResolver implements Resolve<ICourse> {
               );
           });
 
-          return forkJoin(transformedCourses$);
+          return transformedCourses$.length > 0 ? forkJoin(transformedCourses$) : of([]);
         }),
         delay(3000),
         finalize(() => this._utilService.hideSpinner())

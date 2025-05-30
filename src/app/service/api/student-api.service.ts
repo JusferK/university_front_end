@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { IStudent } from "../../../../interface/IStudent.interface";
+import { IStudent } from "../../interface/IStudent.interface";
 import { delay, Observable } from "rxjs";
 
 @Injectable({

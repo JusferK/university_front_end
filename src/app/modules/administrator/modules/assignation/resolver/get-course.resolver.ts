@@ -10,7 +10,7 @@ import { UtilService } from "../../../../../service/execution/util.service";
 import { catchError, concatMap, delay, finalize, forkJoin, Observable, of } from "rxjs";
 import { ICourse } from "../../../../../interface/ICourse.interface";
 import { ICatedratic } from "../../../../../interface/ICatedratic.interface";
-import { CatedraticApiService } from "../../../service/api/catedratic-api.service";
+import { CatedraticApiService } from "../../../../../service/api/catedratic-api.service";
 
 export class GetCourseResolver implements Resolve<any> {
 

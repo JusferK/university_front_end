@@ -30,6 +30,10 @@ const routes: Routes = [
         loadChildren: () => import('./modules/assignation/assignation.module').then(m => m.AssignationModule)
       },
       {
+        path: 'administrator-handler',
+        loadChildren: () => import('./modules/administrator-handler/administrator-handler.module').then(m => m.AdministratorHandlerModule)
+      },
+      {
         path: 'list',
         component: UserListComponent,
         resolve: {

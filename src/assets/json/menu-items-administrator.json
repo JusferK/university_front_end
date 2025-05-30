@@ -13,5 +13,10 @@
     "label": "Asignacion",
     "icon": "pi pi-check-square",
     "routerLink": "/administrator/assignation"
+  },
+  {
+    "label": "Administradores",
+    "icon": "pi pi-users",
+    "routerLink": "/administrator/administrator-handler"
   }
 ]
