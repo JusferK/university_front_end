@@ -23,6 +23,10 @@
             Descripcion
             <p-sortIcon field="description"/>
           </th>
+          <th pSortableColumn="description">
+            Catedratico
+            <p-sortIcon field="description"/>
+          </th>
         </tr>
       </ng-template>
       @if (studentCourses().length > 0) {
@@ -41,6 +45,9 @@
             <td>{{ course.courseId }}</td>
             <td>{{ course.name }}</td>
             <td>{{ course.description }}</td>
+            <td>
+              {{ course.catedratic.name + ' ' + course.catedratic.lastName + ' - ID ' + course.catedratic.catedraticId }}
+            </td>
           </tr>
         </ng-template>
         <ng-template pTemplate="rowexpansion" let-course>

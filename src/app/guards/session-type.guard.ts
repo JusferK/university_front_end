@@ -9,9 +9,6 @@ export class SessionTypeGuard implements CanActivate {
   private readonly _router: Router = inject(Router);
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-
-    debugger
-
     const session = this._profileService.getSavedUser();
     const sessionType = this._profileService.getSavedSessionType();
     const currentUrl: string = state.url;
