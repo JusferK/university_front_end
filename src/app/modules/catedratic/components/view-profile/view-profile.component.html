@@ -1,1 +1,24 @@
-<p>view-profile works!</p>
+<main>
+  <p-fieldset [legend]="legend()">
+    <section>
+      <article>
+        <p>ID: {{ catedraticProfile().catedraticId }}</p>
+      </article>
+      <article>
+        <p>Nombre: {{ catedraticProfile().name }}</p>
+      </article>
+      <article>
+        <p>Apellido: {{ catedraticProfile().lastName }}</p>
+      </article>
+      <article>
+        <p>Correo: {{ catedraticProfile().email }}</p>
+      </article>
+      <article>
+        <p>Genero: {{ catedraticProfile().sex | gender }}</p>
+      </article>
+      <article>
+        <p>Titulo: {{ catedraticProfile().latestDegree | degree }}</p>
+      </article>
+    </section>
+  </p-fieldset>
+</main>

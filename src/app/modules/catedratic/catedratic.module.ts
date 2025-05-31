@@ -6,6 +6,8 @@ import { MainFrameComponent } from './page/main-frame/main-frame.component';
 import { ListCoursesComponent } from "./components/list-courses/list-courses.component";
 import { ViewProfileComponent } from './components/view-profile/view-profile.component';
 import { PrimengModule } from "../primeng/primeng.module";
+import { AdministratorModule } from "../administrator/administrator.module";
+import { GetCourseDataResolver } from "./resolver/get-course-data.resolver";
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { PrimengModule } from "../primeng/primeng.module";
     CommonModule,
     CatedraticRoutingModule,
     PrimengModule,
-  ]
+    AdministratorModule,
+  ],
+  providers: [GetCourseDataResolver]
 })
 export class CatedraticModule {
 }

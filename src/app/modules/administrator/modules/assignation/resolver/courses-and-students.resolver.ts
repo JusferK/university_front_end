@@ -1,4 +1,4 @@
-import { ActivatedRouteSnapshot, MaybeAsync, Resolve, RouterStateSnapshot } from "@angular/router";
+import { Resolve } from "@angular/router";
 import { CourseApiService } from "../service/api/course-api.service";
 import { inject, Injectable } from "@angular/core";
 import { StudentApiService } from "../../../../../service/api/student-api.service";
@@ -14,7 +14,7 @@ export class CoursesAndStudentsResolver implements Resolve<any> {
   private _studentApiService: StudentApiService = inject(StudentApiService);
   private _utilService: UtilService = inject(UtilService);
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
+  resolve(): Observable<any> {
 
     this._utilService.showSpinner();
     const students$: Observable<IStudent[]> = this._studentApiService.getStudents();

@@ -35,7 +35,8 @@ import { GenderPipe } from "../../pipe/gender.pipe";
     InputTextModule,
   ],
   exports: [
-    GenderPipe
+    GenderPipe,
+    DegreePipe
   ],
   providers: [
     GetDataListResolver,

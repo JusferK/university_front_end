@@ -1,13 +1,19 @@
-import { Resolve, ResolveFn } from '@angular/router';
+import { Resolve } from '@angular/router';
 import { inject, Injectable } from "@angular/core";
 import { CourseApiService } from "../service/api/course-api.service";
-import {catchError, concatMap, delay, EMPTY, finalize, forkJoin, map, Observable, of, switchMap} from "rxjs";
+import {
+  delay,
+  finalize,
+  forkJoin,
+  map,
+  Observable,
+  of,
+  switchMap
+} from "rxjs";
 import { ICourse, ICourseWithStudents } from "../../../../../interface/ICourse.interface";
 import { UtilService } from "../../../../../service/execution/util.service";
-import { StudentApiService } from "../../../../../service/api/student-api.service";
 import { CatedraticApiService } from "../../../../../service/api/catedratic-api.service";
 import { ICatedratic } from "../../../../../interface/ICatedratic.interface";
-import { setThrowInvalidWriteToSignalError } from "@angular/core/primitives/signals";
 import { HandleMassiveStudentsService } from "../service/execution/handle-massive-students.service";
 import { IStudent } from "../../../../../interface/IStudent.interface";
 
