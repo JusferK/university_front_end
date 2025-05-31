@@ -1,6 +1,6 @@
 import { Resolve } from '@angular/router';
 import { inject, Injectable } from "@angular/core";
-import { CourseApiService } from "../service/api/course-api.service";
+import { CourseApiService } from "../../../../../service/api/course-api.service";
 import {
   delay,
   finalize,

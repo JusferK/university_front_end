@@ -3,7 +3,7 @@ import {
   Resolve,
   Router,
 } from "@angular/router";
-import { CourseApiService } from "../service/api/course-api.service";
+import { CourseApiService } from "../../../../../service/api/course-api.service";
 import { inject } from "@angular/core";
 import { UtilService } from "../../../../../service/execution/util.service";
 import {

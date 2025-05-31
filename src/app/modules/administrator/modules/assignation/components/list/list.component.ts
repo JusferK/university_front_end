@@ -2,7 +2,7 @@ import { Component, inject, OnDestroy, signal, WritableSignal } from '@angular/c
 import { ActivatedRoute, Router } from "@angular/router";
 import { ICourse, ICourseWithStudents } from "../../../../../../interface/ICourse.interface";
 import { TableRowCollapseEvent, TableRowExpandEvent } from "primeng/table";
-import { CourseApiService } from "../../service/api/course-api.service";
+import { CourseApiService } from "../../../../../../service/api/course-api.service";
 import { UtilService } from "../../../../../../service/execution/util.service";
 import { finalize, Subscription } from "rxjs";
 import { ToastService } from "../../../../service/execution/toast.service";

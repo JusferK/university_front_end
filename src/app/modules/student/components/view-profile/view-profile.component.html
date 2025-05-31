@@ -1,0 +1,24 @@
+<main>
+  <p-fieldset [legend]="legend()">
+    <section>
+      <article>
+        <p>ID: {{ studentProfile().studentId }}</p>
+      </article>
+      <article>
+        <p>Nombre: {{ studentProfile().name }}</p>
+      </article>
+      <article>
+        <p>Apellido: {{ studentProfile().lastName }}</p>
+      </article>
+      <article>
+        <p>Correo: {{ studentProfile().email }}</p>
+      </article>
+      <article>
+        <p>Genero: {{ studentProfile().sex | gender }}</p>
+      </article>
+      <article>
+        <p>Fecha de nacimiento: {{ studentProfile().birthDate | date }}</p>
+      </article>
+    </section>
+  </p-fieldset>
+</main>

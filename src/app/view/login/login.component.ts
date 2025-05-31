@@ -31,6 +31,7 @@ export class LoginComponent implements OnDestroy {
   }
 
   accessHandler(): void {
+    if (!this.loginForm.valid) return;
     this._loginSubscription = this._loginService.login(this.loginForm.value).subscribe();
   }
 

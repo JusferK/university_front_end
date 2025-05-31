@@ -11,7 +11,7 @@ import { ICatedratic } from "../../../../../../interface/ICatedratic.interface";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { TransformUsersOptionsService } from "../../service/execution/transform-users-options.service";
 import { ISelect } from "../../../../../../interface/ISelect.interface";
-import { CourseApiService } from "../../service/api/course-api.service";
+import { CourseApiService } from "../../../../../../service/api/course-api.service";
 import { finalize, Subscription } from "rxjs";
 import { UtilService } from "../../../../../../service/execution/util.service";
 import { MessageService } from "primeng/api";

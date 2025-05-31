@@ -1,0 +1,12 @@
+[
+  {
+    "label": "Lista de cursos",
+    "icon": "pi pi-list",
+    "route": "/student/courses-assigned"
+  },
+  {
+    "label": "Ver perfil",
+    "icon": "pi pi-user",
+    "route": "/student/profile"
+  }
+]

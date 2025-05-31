@@ -1,5 +1,5 @@
 import { Resolve } from "@angular/router";
-import { CourseApiService } from "../service/api/course-api.service";
+import { CourseApiService } from "../../../../../service/api/course-api.service";
 import { inject, Injectable } from "@angular/core";
 import { StudentApiService } from "../../../../../service/api/student-api.service";
 import { UtilService } from "../../../../../service/execution/util.service";

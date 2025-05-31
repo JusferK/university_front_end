@@ -1,7 +1,7 @@
 import { inject, Injectable } from "@angular/core";
 import { Resolve } from "@angular/router";
 import { ICourse, ICourseWithStudents } from "../../../interface/ICourse.interface";
-import { CourseApiService } from "../../administrator/modules/assignation/service/api/course-api.service";
+import { CourseApiService } from "../../../service/api/course-api.service";
 import { UtilService } from "../../../service/execution/util.service";
 import { CatedraticApiService } from "../../../service/api/catedratic-api.service";
 import {

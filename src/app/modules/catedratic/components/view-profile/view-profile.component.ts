@@ -10,7 +10,7 @@ import { ICatedratic } from "../../../../interface/ICatedratic.interface";
 export class ViewProfileComponent {
 
   private _profileService: ProfileService = inject(ProfileService);
-  catedraticProfile: WritableSignal<ICatedratic> = signal<ICatedratic>(this._profileService.getSavedUser() as ICatedratic)
+  catedraticProfile: WritableSignal<ICatedratic> = signal<ICatedratic>(this._profileService.getSavedUser() as ICatedratic);
   legend: Signal<string> = computed((): string => `Hola ${this.catedraticProfile().name} ${this.catedraticProfile().lastName}, este es tu perfil`);
 
 }

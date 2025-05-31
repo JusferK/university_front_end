@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { delay, Observable } from "rxjs";
-import { ICourse } from "../../../../../../interface/ICourse.interface";
+import { ICourse } from "../../interface/ICourse.interface";
 
 @Injectable({
   providedIn: 'root'

@@ -1,0 +1,30 @@
+<main>
+  <p-menubar [model]="items">
+    <ng-template pTemplate="item" let-item let-root="root">
+      <a
+        pRipple
+        class="flex align-items-center p-menuitem-link"
+        routerLink="{{ item.route }}"
+        [routerLinkActive]="'active'"
+      >
+        <span [class]="item.icon" class="menu-bar-item"></span>
+        <span class="ml-2">{{ item.label }}</span>
+      </a>
+    </ng-template>
+    <ng-template pTemplate="end">
+      <div class="flex align-items-center gap-2">
+        <p-avatar (click)="op.toggle($event)" size="large" [label]="userInitial()"/>
+        <p-overlayPanel #op>
+          <p-button
+            label="Logout"
+            icon="pi pi-sign-in"
+            iconPos="right"
+            severity="secondary"
+            (onClick)="logoutHandler()"
+          />
+        </p-overlayPanel>
+      </div>
+    </ng-template>
+  </p-menubar>
+  <router-outlet/>
+</main>
